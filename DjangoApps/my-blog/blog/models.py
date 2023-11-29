@@ -1,3 +1,4 @@
+from turtle import title
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -14,3 +15,9 @@ class Post(models.Model):
     update_on = models.DateTimeField(auto_now=True)
     slug = models.CharField(max_length=200, unique=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    
+    class Meta:
+        ordering = ['create_on']
+    
+    def __str__(self):
+        return self.title
